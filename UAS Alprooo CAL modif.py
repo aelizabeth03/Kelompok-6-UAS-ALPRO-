@@ -61,5 +61,29 @@ def perbarui_stok():
     else:
         print(f"Barang '{nama}' tidak ditemukan dalam stok.")
 
+#mencari barang berdasarkan nama
+def cari_barang():
+    nama = input("Masukkan nama barang yang dicari: ")
+    if nama in stok_barang:
+        print(f"Barang '{nama}' ditemukan dengan jumlah stok {stok_barang[nama]}.")
+    else:
+        print(f"Barang '{nama}' tidak ditemukan dalam stok.")
+
+#menampilkan barang dengan stok di bawah jumlah tertentu
+def tampilkan_barang_bawah_stok():
+    try:
+        batas = int(input("Masukkan batas jumlah stok: "))
+        print(f"\nBarang dengan stok di bawah {batas}:")
+        ditemukan = False
+        for nama, jumlah in stok_barang.items():
+            if jumlah < batas:
+                print(f"- {nama}: {jumlah}")
+                ditemukan = True
+        if not ditemukan:
+            print("Tidak ada barang dengan stok di bawah batas yang diberikan.")
+    except ValueError:
+        print("Input batas jumlah harus berupa angka.")
+
+
 if __name__ == "__main__":
     main_menu() 
